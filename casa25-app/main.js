@@ -30,7 +30,7 @@ const state = {
 };
 
 // --- Configuration ---
-const APP_VERSION = 'v7'; // Increment this to force cache clear
+const APP_VERSION = 'v9'; // Increment this to force cache clear
 const API_URL = 'https://script.google.com/macros/s/AKfycby40y1JbLz3mTBhPldQxuiHM-bT_60yoByvWaZexqambr7i9nnQgVl01m8DtPQOeo44kg/exec';
 
 // Check app version and clear old cache if needed
@@ -452,8 +452,8 @@ function renderManual() {
                         <li>Cada control remoto está marcado para evitar confusiones.</li>
                     </ul>
 
-                    <h4>Pérgolas</h4>
-                    <p>Nos encanta la tecnología, por eso estas piezas son eléctricas. Por favor, recógelas cada noche o si llueve; el agua de Melgar es potente y el peso puede dañarlas. ¡Gracias por cuidarlas! ⛈️.</p>
+                    <h4>Pérgolas y black-outs</h4>
+                    <p>Nos encanta la tecnología y la facilidad de uso, por eso estos elementos son eléctricos. Por lo que recomendamos las pérgolas recógelas cada noche o si llueve; ya que el peso puede dañarlas. ¡Gracias por cuidarlas! ⛈️. Los black-outs se recomienda recogerlos por completo durante el día, para que el sol no los queme.</p>
                     
                     <h4>Agua (PISCINA)</h4>
                     <p>En Melgar el agua sale a temperatura ambiente. <strong>Importante:</strong> Es obligatorio el uso de gorro de baño. Los menores deben estar siempre acompañados. Por higiene, no está permitido ingerir alimentos dentro de la zona húmeda.</p>
@@ -527,8 +527,8 @@ function renderManual() {
                     <ul>
                         <li><strong>Horas de silencio:</strong> 10 PM a 8 AM.</li>
                         <li><strong>Prohibido fumar:</strong> En todo el interior de la casa. Permitido solo en áreas abiertas (BBQ/Piscina).</li>
-                        <li><strong>Jacuzzi:</strong> Tiene capacidad para hasta 16 invitados. Nada de comida, bebidas o peluditos dentro del agua.</li>
-                        <li><strong>Mascotas:</strong> ¡Los peluditos son bienvenidos! 🐶😺 Pero no tienen acceso al jacuzzi.</li>
+                        <li><strong>Jacuzzi:</strong> Tiene capacidad para hasta 16 invitados. De igual manera está prohibido el consumo de bebidas o alimentos dentro del jacuzzi 🚫🍔🍺🚫, para evitar daños en los sistemas de chorros.</li>
+                        <li><strong>Mascotas:</strong> ¡Los peluditos son bienvenidos! 🐶😺 Pero no tienen acceso al jacuzzi, para evitar que sus pelitos generen daños en los sistemas de chorros.</li>
                         <li><strong>Zonas Comunes:</strong> Disfruta de la piscina y la cancha múltiple. Ten en cuenta que el gimnasio y el sauna no están habilitados para esta estancia.</li>
                     </ul>
                 </div>
