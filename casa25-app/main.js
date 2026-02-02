@@ -8,7 +8,7 @@ const state = {
     isAuthenticated: true, // TEMP: Disabled login for demo
     adminPins: ['1016033125', '1016101547', '1012405707', '1102372306'],
     reservation: {
-        huespedNombre: 'Manuela',
+        huespedNombre: '',
         codigoPuerta: '0008505#',
         guestPin: '8505',
         checkIn: '2026-01-30T15:00',
@@ -1207,3 +1207,4 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }, 1000);
 });
+
