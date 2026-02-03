@@ -31,7 +31,7 @@ const state = {
 };
 
 // --- Configuration ---
-const APP_VERSION = 'v11'; // Increment this to force cache clear
+const APP_VERSION = 'v12'; // Increment this to force cache clear
 const API_URL = 'https://script.google.com/macros/s/AKfycbxpTn-SWgq2R6ZPwBVM4_2f4fUnPPulLX8CamxStJGSEhG9qbYznRHun33e1u9g3CyoEg/exec';
 
 // Check app version and clear old cache if needed
@@ -1152,6 +1152,7 @@ function saveState() {
     // 2. Sync with Google Cloud (Background)
     fetch(API_URL, {
         method: 'POST',
+        mode: 'no-cors',
         headers: {
             'Content-Type': 'text/plain'
         },
@@ -1160,14 +1161,9 @@ function saveState() {
             payload: state.reservation
         })
     })
-        .then(res => res.json())
-        .then(data => {
-            if (data.result === 'success') {
-                console.log('✅ Guardado en Google Sheets');
-                showToast('Guardado en la nube ☁️');
-            } else {
-                console.warn('⚠️ Respuesta inesperada:', data);
-            }
+        .then(() => {
+            console.log('✅ Enviado a Google Sheets');
+            showToast('Sincronizado con la nube ☁️');
         })
         .catch(err => {
             console.warn('Sync error (Offline?):', err);
