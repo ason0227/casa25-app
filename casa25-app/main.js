@@ -31,8 +31,8 @@ const state = {
 };
 
 // --- Configuration ---
-const APP_VERSION = 'v9'; // Increment this to force cache clear
-const API_URL = 'https://script.google.com/macros/s/AKfycby40y1JbLz3mTBhPldQxuiHM-bT_60yoByvWaZexqambr7i9nnQgVl01m8DtPQOeo44kg/exec';
+const APP_VERSION = 'v10'; // Increment this to force cache clear
+const API_URL = 'https://script.google.com/macros/s/AKfycbxpTn-SWgq2R6ZPwBVM4_2f4fUnPPulLX8CamxStJGSEhG9qbYznRHun33e1u9g3CyoEg/exec';
 
 // Check app version and clear old cache if needed
 const savedVersion = localStorage.getItem('casa25_version');
