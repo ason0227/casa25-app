@@ -5,10 +5,10 @@
 // --- State Management ---
 const state = {
     role: 'guest', // 'admin' or 'guest'
-    isAuthenticated: true, // TEMP: Disabled login for demo
+    isAuthenticated: false, // Login enabled
     adminPins: ['1016033125', '1016101547', '1012405707', '1102372306'],
     reservation: {
-        huespedNombre: '',
+        huespedNombre: 'Manuela',
         codigoPuerta: '0008505#',
         guestPin: '8505',
         checkIn: '2026-01-30T15:00',
@@ -26,7 +26,8 @@ const state = {
     },
     currentTime: new Date().toISOString(),
     view: 'dashboard', // dashboard, guide, manual, support, checkout, admin
-    guideCategory: 'all'
+    guideCategory: 'all',
+    weather: { temp: '--', icon: '⏳' } // Initial weather state
 };
 
 // --- Configuration ---
@@ -65,21 +66,33 @@ function getRentalStatus() {
     return 'post-departure';
 }
 
+// --- Weather Service ---
+function fetchWeather() {
+    // Open-Meteo API for Melgar, Tolima (Lat: 4.2048, Long: -74.6408)
+    const url = 'https://api.open-meteo.com/v1/forecast?latitude=4.2048&longitude=-74.6408&current=temperature_2m,is_day&timezone=America%2FBogota';
+
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            if (data.current) {
+                const temp = Math.round(data.current.temperature_2m);
+                const isDay = data.current.is_day;
+
+                state.weather.temp = `${temp}°C`;
+                state.weather.icon = isDay ? '☀️' : '🌙';
+
+                // Update UI if valid
+                const weatherEl = document.getElementById('weather-display');
+                if (weatherEl) {
+                    weatherEl.innerHTML = `📍 Melgar: ${state.weather.temp} ${state.weather.icon}`;
+                }
+            }
+        })
+        .catch(err => console.error('Weather fetch failed:', err));
+}
+
 function getWeatherWidget() {
-    const hour = new Date().getHours();
-    let temp = '31°C';
-    let icon = '☀️';
-
-    // Simple dynamic logic
-    if (hour >= 18 || hour < 6) {
-        temp = '24°C';
-        icon = '🌙';
-    } else if (hour >= 17) {
-        temp = '28°C';
-        icon = '🌅';
-    }
-
-    return `📍 Melgar: ${temp} ${icon}`;
+    return `<span id="weather-display">📍 Melgar: ${state.weather.temp} ${state.weather.icon}</span>`;
 }
 
 // --- Icons ---
@@ -216,7 +229,6 @@ function renderDashboard() {
             </div>
         </div>
         
-        <!-- TEMP: Admin/logout buttons hidden for demo
         <div class="mode-switch-container">
             <button class="btn-mode-switch" onclick="logout()">
                 🚪 Cerrar Sesión
@@ -227,7 +239,6 @@ function renderDashboard() {
                 </button>
             ` : ''}
         </div>
-        -->
     `;
 }
 
@@ -658,7 +669,10 @@ function renderThanks() {
 function renderAdmin() {
     return `
         <header>
-            <button class="btn-small" onclick="logout()">← Salir</button>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <button class="btn-small" onclick="logout()">← Salir</button>
+                <button class="btn-small" onclick="navigate('dashboard')">👀 Ver como Huésped</button>
+            </div>
             <h1>Configuración Admin</h1>
         </header>
 
@@ -1197,6 +1211,9 @@ document.addEventListener('DOMContentLoaded', () => {
     setInterval(checkTriggers, 60000);
     checkTriggers();
 
+    // Fetch Weather
+    fetchWeather();
+
     // Ensure render happens after a small delay to show the loader
     setTimeout(() => {
         try {
@@ -1207,4 +1224,3 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }, 1000);
 });
-
