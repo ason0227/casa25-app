@@ -31,7 +31,7 @@ const state = {
 };
 
 // --- Configuration ---
-const APP_VERSION = 'v10'; // Increment this to force cache clear
+const APP_VERSION = 'v11'; // Increment this to force cache clear
 const API_URL = 'https://script.google.com/macros/s/AKfycbxpTn-SWgq2R6ZPwBVM4_2f4fUnPPulLX8CamxStJGSEhG9qbYznRHun33e1u9g3CyoEg/exec';
 
 // Check app version and clear old cache if needed
@@ -1153,7 +1153,7 @@ function saveState() {
     fetch(API_URL, {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'text/plain'
         },
         body: JSON.stringify({
             action: 'save_reservation',
