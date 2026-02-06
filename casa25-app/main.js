@@ -31,7 +31,7 @@ const state = {
 };
 
 // --- Configuration ---
-const APP_VERSION = 'v12'; // Increment this to force cache clear
+const APP_VERSION = 'v13'; // Increment this to force cache clear
 const API_URL = 'https://script.google.com/macros/s/AKfycbxpTn-SWgq2R6ZPwBVM4_2f4fUnPPulLX8CamxStJGSEhG9qbYznRHun33e1u9g3CyoEg/exec';
 
 // Check app version and clear old cache if needed
@@ -58,8 +58,8 @@ function getRentalStatus() {
     const cin = new Date(state.reservation.checkIn);
     const cout = new Date(state.reservation.checkOut);
 
-    // Threshold for dashboard feature activation: 6 hours before check-in
-    const accessTime = new Date(cin.getTime() - (6 * 60 * 60 * 1000));
+    // Threshold for dashboard feature activation: 48 hours before check-in
+    const accessTime = new Date(cin.getTime() - (48 * 60 * 60 * 1000));
 
     if (now < accessTime) return 'pre-arrival';
     if (now >= accessTime && now <= cout) return 'stay';
