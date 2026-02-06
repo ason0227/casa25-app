@@ -31,7 +31,7 @@ const state = {
 };
 
 // --- Configuration ---
-const APP_VERSION = 'v13'; // Increment this to force cache clear
+const APP_VERSION = 'v14'; // Increment this to force cache clear
 const API_URL = 'https://script.google.com/macros/s/AKfycbxpTn-SWgq2R6ZPwBVM4_2f4fUnPPulLX8CamxStJGSEhG9qbYznRHun33e1u9g3CyoEg/exec';
 
 // Check app version and clear old cache if needed
@@ -192,7 +192,7 @@ function renderDashboard() {
             <h2>Código de Entrada</h2>
             ${isLocked ? `
                 <div class="warning-banner">
-                    🔒 Código de puerta bloqueado. Disponible 6 horas antes de tu llegada.
+                    🔒 Código de puerta bloqueado. Disponible 48 horas antes de tu llegada.
                 </div>
                 <button class="btn btn-primary" onclick="openLink('https://docs.google.com/forms/d/e/1FAIpQLSf8_Ct31aTtiKfSUnoFU4ztUKLWGO1lr-f50wbs-EEIuHN5dQ/viewform?usp=preview')" style="font-size: 14px; line-height: 1.2; padding: 12px 20px;">
                     Formulario de registro obligatorio para ser diligenciado uno por cada huesped
