@@ -31,7 +31,7 @@ const state = {
 };
 
 // --- Configuration ---
-const APP_VERSION = 'v14'; // Increment this to force cache clear
+const APP_VERSION = 'v15'; // Increment this to force cache clear
 const API_URL = 'https://script.google.com/macros/s/AKfycbxpTn-SWgq2R6ZPwBVM4_2f4fUnPPulLX8CamxStJGSEhG9qbYznRHun33e1u9g3CyoEg/exec';
 
 // Check app version and clear old cache if needed
@@ -380,6 +380,10 @@ function renderManual() {
                     <div class="action-grid" style="margin-top:15px;">
                         <button class="btn btn-primary" onclick="openLink('https://www.google.com/maps/dir/?api=1&destination=Condominio+Portal+de+la+Estancia+Melgar')">Google Maps</button>
                         <button class="btn btn-accent" onclick="openLink('https://waze.com/ul?q=Condominio+Portal+de+la+Estancia+Melgar&navigate=yes')">Waze</button>
+                    </div>
+                    <div style="margin-top: 20px; text-align: center;">
+                        <p style="margin-bottom: 10px; font-weight: bold;">Así luce la entrada:</p>
+                        <img src="fachada.jpg" alt="Fachada Portal de la Estancia" style="width: 100%; border-radius: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
                     </div>
                 </div>
             </div>
